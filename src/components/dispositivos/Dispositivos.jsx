@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "store/StoreProvider";
+import { types } from "store/storeReducer";
+import { useContext } from "react"
 // Chakra imports
 import {
   Box,
@@ -20,9 +23,14 @@ import {
 
 /*Para poder usarlo como etiqueta se exporta */
 export function Dispositivos(){
+  //Valor del estado local para poner nombre y potencia
+    const [name, setName]= useState("");
+    const [potencia, setPotencia]= useState(0);
+
     const textColor = useColorModeValue("navy.700", "white");
     const brandStars = useColorModeValue("brand.500", "brand.400");
     const [show, setShow] = React.useState(false);
+    const dispatch= useDispatch();
     return(
         <Center w='100%'>
             <Box w='40%' as='span' fontWeight='bold' fontSize='lg'>
@@ -46,6 +54,10 @@ export function Dispositivos(){
           mb='24px'
           fontWeight='500'
           size='lg'
+          onChange={({target:{value}})=>{
+            console.log(value);
+            setName(value);
+          }}
         />
         <FormLabel
           ms='4px'
@@ -62,6 +74,10 @@ export function Dispositivos(){
             placeholder='40 W'
             mb='24px'
             size='lg'
+            onChange={({target:{value}})=>{
+              console.log(value);
+              setPotencia(value);
+            }}
             type='number'
             variant='auth'
           />
@@ -72,7 +88,17 @@ export function Dispositivos(){
           fontWeight='500'
           w='100%'
           h='50'
-          mb='24px'>
+          mb='24px'
+          onClick={()=>dispatch({
+            type: types.productAdd,
+            payload:{
+              "name":name,
+              "estado": "Approved",
+              "potencia": potencia,
+              "energia": potencia*24,
+              "acciones": 75.5 
+            }
+            })}>
           Crear dispositivo
         </Button>
       </FormControl>

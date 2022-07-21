@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "routes.js";
-
+import { useContext } from "react"
+import { StoreContext } from "store/StoreProvider";
+import { types } from "store/storeReducer";
 // Chakra imports
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
@@ -12,6 +14,10 @@ import { SidebarContext } from "contexts/SidebarContext";
 export default function Auth() {
   // states and functions
   const [toggleSidebar, setToggleSidebar] = useState(false);
+  //estado global
+  const [store, dispatch] = useContext(StoreContext)
+  const {user, dispositivos} = store;
+  console.log( dispositivos);
   // functions for changing the states from components
   const getRoute = () => {
     return window.location.pathname !== "/auth/full-screen-maps";

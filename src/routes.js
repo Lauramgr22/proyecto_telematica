@@ -35,7 +35,7 @@ const routes = [
     component: DataTables,
   },
   {
-    name: "Sign In",
+    name: "Iniciar sesion",
     layout: "/auth",
     path: "/sign-in",
     icon: <Icon as={MdLock} width='20px' height='20px' color='inherit' />,

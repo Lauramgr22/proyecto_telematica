@@ -12,6 +12,10 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useMemo } from "react";
+import { StoreContext } from "store/StoreProvider";
+import { types } from "store/storeReducer";
+import { useContext } from "react"
+
 import {
   useGlobalFilter,
   usePagination,
@@ -30,9 +34,12 @@ import { BsTrash } from "react-icons/bs";
 export default function ColumnsTable(props) {
   const { columnsData, tableData } = props;
 
-  const columns = useMemo(() => columnsData, [columnsData]);
-  const data = useMemo(() => tableData, [tableData]);
+  const [store, dispatch] = useContext(StoreContext)
+  const {user, dispositivos} = store;
+  console.log( dispositivos);
 
+  const columns = useMemo(() => columnsData, [columnsData]);
+  const data = dispositivos
   const tableInstance = useTable(
     {
       columns,
@@ -51,7 +58,7 @@ export default function ColumnsTable(props) {
     prepareRow,
     initialState,
   } = tableInstance;
-  initialState.pageSize = 5;
+  initialState.pageSize = 50;
 
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
