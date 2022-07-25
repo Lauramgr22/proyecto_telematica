@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import { useDispatch } from "store/StoreProvider";
 import { types } from "store/storeReducer";
 import { useContext } from "react"
+import { StoreContext } from "store/StoreProvider";
+
 // Chakra imports
 import {
   Box,
@@ -26,6 +28,11 @@ export function Dispositivos(){
   //Valor del estado local para poner nombre y potencia
     const [name, setName]= useState("");
     const [potencia, setPotencia]= useState(0);
+
+    const [store, dispatch2] = useContext(StoreContext)
+    const {user, lastId } = store;
+   // console.log(lastId, "****************************************************");
+
 
     const textColor = useColorModeValue("navy.700", "white");
     const brandStars = useColorModeValue("brand.500", "brand.400");
@@ -92,13 +99,15 @@ export function Dispositivos(){
           onClick={()=>dispatch({
             type: types.productAdd,
             payload:{
+              "id":lastId+1,
               "name":name,
-              "estado": "Approved",
+              "estado": "Inactivo",
               "potencia": potencia,
               "energia": potencia*24,
               "acciones": 75.5 
             }
-            })}>
+            })}
+            >
           Crear dispositivo
         </Button>
       </FormControl>

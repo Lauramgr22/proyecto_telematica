@@ -9,6 +9,7 @@ import {
   Th,
   Thead,
   Tr,
+  Switch,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useMemo } from "react";
@@ -25,7 +26,7 @@ import {
 
 // Custom components
 import Card from "components/card/Card";
-import Menu from "components/menu/MainMenu";
+//import Menu from "components/menu/MainMenu";
 import SwitchField from "components/fields/SwitchField";
 import { SimpleGrid } from '@chakra-ui/react'
 // Assets
@@ -36,10 +37,11 @@ export default function ColumnsTable(props) {
 
   const [store, dispatch] = useContext(StoreContext)
   const {user, dispositivos} = store;
-  console.log( dispositivos);
+  //console.log( dispositivos);
 
   const columns = useMemo(() => columnsData, [columnsData]);
   const data = dispositivos
+  //console.log(data);
   const tableInstance = useTable(
     {
       columns,
@@ -62,6 +64,7 @@ export default function ColumnsTable(props) {
 
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
+
   return (
     <Card
       direction='column'
@@ -76,7 +79,6 @@ export default function ColumnsTable(props) {
           lineHeight='100%'>
           Tabla de dispositivos
         </Text>
-        <Menu />
       </Flex>
       <Table {...getTableProps()} variant='simple' color='gray.500' mb='24px'>
         <Thead>
@@ -102,6 +104,7 @@ export default function ColumnsTable(props) {
         </Thead>
         <Tbody {...getTableBodyProps()}>
           {page.map((row, index) => {
+            //console.log(row,"---------------------------");
             prepareRow(row);
             return (
               <Tr {...row.getRowProps()} key={index}>
@@ -121,18 +124,18 @@ export default function ColumnsTable(props) {
                           h='24px'
                           me='5px'
                           color={
-                            cell.value === "Approved"
+                            cell.value === "Activo"
                               ? "green.500"
-                              : cell.value === "Disable"
+                              : cell.value === "Inactivo"
                                 ? "red.500"
                                 : cell.value === "Error"
                                   ? "orange.500"
                                   : null
                           }
                           as={
-                            cell.value === "Approved"
+                            cell.value === "Activo"
                               ? MdCheckCircle
-                              : cell.value === "Disable"
+                              : cell.value === "Inactivo"
                                 ? MdCancel
                                 : cell.value === "Error"
                                   ? MdOutlineError
@@ -157,14 +160,23 @@ export default function ColumnsTable(props) {
                       </Text>
                     );
                   } else if (cell.column.Header === "ACCIONES") {
+                    const handleChange = ()=>dispatch({
+                      type: types.productChange,
+                      payload:{id:row.original.id}
+                      });
+                    const isChecked= row.cells[3].value== "Activo"?true: false;
                     data = (
                       <box>
                         <SimpleGrid columns={2} spacing='5px'>
-                          <SwitchField
-                            reversed={true}
+                          <Switch
+                            reversed={false}
                             fontSize='sm'
                             mb='20px'
                             id='2'
+                            onChange= {
+                              handleChange
+                            }
+                            isChecked= {isChecked}
                           />
                           <Icon
                             w='24px'

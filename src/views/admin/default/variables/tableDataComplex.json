@@ -1,7 +1,7 @@
 [
   {
     "name":"Bombillo",
-    "estado": "Approved",
+    "estado": "Activo",
     "potencia": "18 Apr 2022",
     "energia": 75.5,
     "acciones": 75.5  
@@ -9,7 +9,7 @@
   },
   {
     "name":"Bombillo",
-    "estado": "Disable",
+    "estado": "Inactivo",
     "potencia": "18 Apr 2022",
     "energia": 25.5,
     "acciones": 75.5

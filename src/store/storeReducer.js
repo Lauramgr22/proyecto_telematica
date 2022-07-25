@@ -1,4 +1,5 @@
 import { type } from "@testing-library/user-event/dist/type";
+import { update } from "./EstadoBoton";
 
 const types = {
     authLogin: 'auth - login',
@@ -8,35 +9,40 @@ const types = {
     productAdd: 'product - add'
 }
 const initialStore = {
+    lastId:4,
     user: {id:1, name: 'Laura'},
     dispositivos: [
         {
+            "id": 1,
             "name":"Bombillo 1",
-            "estado": "Approved",
+            "estado": "Activo",
             "potencia": 40,
             "energia": 960,
-            "acciones": 75.5  
+            "acciones":0,
           },
           {
+            "id": 2,  
             "name":"Bombillo 2",
-            "estado": "Disable",
+            "estado": "Inactivo",
             "potencia": 40,
             "energia": 960,
-            "acciones": 75.5
+            "acciones":1,
           },
           {
+            "id": 3,
             "name":"Nevera",
-            "estado": "Error",
+            "estado": "Inactivo",
             "potencia": 100,
             "energia": 2400,
-            "acciones": 75.5 
+            "acciones":2, 
           },
           {
+            "id": 4,
             "name":"Lavadora",
-            "estado": "Approved",
+            "estado": "Inactivo",
             "potencia": 100,
             "energia": 2400,
-            "acciones": 75.5 
+            "acciones":3,
           }
     ]
 }
@@ -58,15 +64,17 @@ const storeReducer = (state,action) => {
             dispositivos: []
         } 
     case types.productChange:
+        console.log("productChange");
         return{
-            ...state,
-            dispositivos: [{id: 3, tittle: 'Product #3' }]
+           ...state, 
+           dispositivos: update(state.dispositivos,action.payload.id)
         }   
     case types.productAdd:
         console.log(state, action.payload);
         return{
             ...state,
-            dispositivos: [...state.dispositivos,action.payload]
+            dispositivos: [...state.dispositivos,action.payload],
+            lastId: state.lastId+1
         }   
      default:
          return state;
