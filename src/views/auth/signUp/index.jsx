@@ -1,33 +1,11 @@
-/* eslint-disable */
-/*!
-  _   _  ___  ____  ___ ________  _   _   _   _ ___   
- | | | |/ _ \|  _ \|_ _|__  / _ \| \ | | | | | |_ _| 
- | |_| | | | | |_) || |  / / | | |  \| | | | | || | 
- |  _  | |_| |  _ < | | / /| |_| | |\  | | |_| || |
- |_| |_|\___/|_| \_\___/____\___/|_| \_|  \___/|___|
-                                                                                                                                                                                                                                                                                                                                       
-=========================================================
-* Horizon UI - v1.1.0
-=========================================================
-
-* Product Page: https://www.horizon-ui.com/
-* Copyright 2022 Horizon UI (https://www.horizon-ui.com/)
-
-* Designed and Coded by Simmmple
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-// Chakra imports
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase"
+import { useNavigate } from 'react-router-dom'
+
 import {
   Box,
   Button,
-  Checkbox,
   Flex,
   FormControl,
   FormLabel,
@@ -48,13 +26,36 @@ import illustration from "assets/img/auth/auth2.png";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiEyeCloseLine } from "react-icons/ri";
 
-function SignIn() {
+function SignUp() {
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  })
+  const handleChange = ({ target: { name, value } }) =>
+    setUser({ ...user, [name]: value })
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    try {
+      createUserWithEmailAndPassword(auth, user.email, user.password)
+
+    } catch (error) {
+
+    }
+
+  }
   // Chakra color mode
   const textColor = useColorModeValue("navy.700", "white");
   const textColorSecondary = "gray.400";
   const textColorDetails = useColorModeValue("navy.700", "secondaryGray.600");
   const textColorBrand = useColorModeValue("brand.500", "white");
   const brandStars = useColorModeValue("brand.500", "brand.400");
+  const googleBg = useColorModeValue("secondaryGray.300", "whiteAlpha.200");
+  const googleText = useColorModeValue("navy.700", "white");
+  const googleHover = useColorModeValue(
+    { bg: "gray.200" },
+    { bg: "whiteAlpha.300" }
+  );
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   return (
@@ -73,7 +74,7 @@ function SignIn() {
         flexDirection='column'>
         <Box me='auto'>
           <Heading color={textColor} fontSize='36px' mb='10px'>
-            Iniciar sesión
+            Crear Cuenta
           </Heading>
           <Text
             mb='36px'
@@ -81,7 +82,7 @@ function SignIn() {
             color={textColorSecondary}
             fontWeight='400'
             fontSize='md'>
-            ¡Ingrese su correo electrónico y contraseña para iniciar sesión!
+            ¡Ingrese su correo electrónico y contraseña para crear una cuenta!
           </Text>
         </Box>
         <Flex
@@ -98,7 +99,7 @@ function SignIn() {
             <HSeparator />
             <HSeparator />
           </Flex>
-          <FormControl>
+          <form onSubmit={handleSubmit}>
             <FormLabel
               display='flex'
               ms='4px'
@@ -109,12 +110,15 @@ function SignIn() {
               Email<Text color={brandStars}>*</Text>
             </FormLabel>
             <Input
+              id="email"
+              name="email"
+              onChange={handleChange}
               isRequired={true}
               variant='auth'
               fontSize='sm'
               ms={{ base: "0px", md: "0px" }}
               type='email'
-              placeholder='email@email.com'
+              placeholder='mail@simmmple.com'
               mb='24px'
               fontWeight='500'
               size='lg'
@@ -130,12 +134,15 @@ function SignIn() {
             <InputGroup size='md'>
               <Input
                 isRequired={true}
+                id="password"
+                name="password"
                 fontSize='sm'
                 placeholder='Min. 8 characters'
                 mb='24px'
                 size='lg'
                 type={show ? "text" : "password"}
                 variant='auth'
+                onChange={handleChange}
               />
               <InputRightElement display='flex' alignItems='center' mt='4px'>
                 <Icon
@@ -146,65 +153,22 @@ function SignIn() {
                 />
               </InputRightElement>
             </InputGroup>
-            <Flex justifyContent='space-between' align='center' mb='24px'>
-              <FormControl display='flex' alignItems='center'>
-                <Checkbox
-                  id='remember-login'
-                  colorScheme='brandScheme'
-                  me='10px'
-                />
-                <FormLabel
-                  htmlFor='remember-login'
-                  mb='0'
-                  fontWeight='normal'
-                  color={textColor}
-                  fontSize='sm'>
-                  Keep me logged in
-                </FormLabel>
-              </FormControl>
-              <NavLink to='/auth/forgot-password'>
-                <Text
-                  color={textColorBrand}
-                  fontSize='sm'
-                  w='145px'
-                  fontWeight='500'>
-                  ¿Olvidó su contraseña?
-                </Text>
-              </NavLink>
-            </Flex>
             <Button
+              type="submit"
               fontSize='sm'
               variant='brand'
               fontWeight='500'
               w='100%'
               h='50'
-              mb='24px'>
-              Iniciar sesión
+              mb='24px'
+            >
+              Crear Cuenta
             </Button>
-          </FormControl>
-          <Flex
-            flexDirection='column'
-            justifyContent='center'
-            alignItems='start'
-            maxW='100%'
-            mt='0px'>
-            <Text color={textColorDetails} fontWeight='400' fontSize='14px'>
-              ¿Aún no se ha registrado?
-              <NavLink to='/auth/sign-up'>
-                <Text
-                  color={textColorBrand}
-                  as='span'
-                  ms='5px'
-                  fontWeight='500'>
-                  Cree una cuenta
-                </Text>
-              </NavLink>
-            </Text>
-          </Flex>
+          </form>
         </Flex>
       </Flex>
     </DefaultAuth>
   );
 }
 
-export default SignIn;
+export default SignUp;

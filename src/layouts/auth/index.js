@@ -8,7 +8,7 @@ import { types } from "store/storeReducer";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 
 // Layout components
-import { SidebarContext } from "contexts/SidebarContext";
+import { AuthProvider } from "contexts/SidebarContext";
 
 // Custom Chakra theme
 export default function Auth() {
@@ -16,8 +16,8 @@ export default function Auth() {
   const [toggleSidebar, setToggleSidebar] = useState(false);
   //estado global
   const [store, dispatch] = useContext(StoreContext)
-  const {user, dispositivos} = store;
-  console.log( dispositivos);
+  const { user, dispositivos } = store;
+  console.log(dispositivos);
   // functions for changing the states from components
   const getRoute = () => {
     return window.location.pathname !== "/auth/full-screen-maps";
@@ -47,7 +47,7 @@ export default function Auth() {
   document.documentElement.dir = "ltr";
   return (
     <Box>
-      <SidebarContext.Provider
+      <AuthProvider.Provider
         value={{
           toggleSidebar,
           setToggleSidebar,
@@ -69,14 +69,13 @@ export default function Auth() {
                 {getRoutes(routes)}
                 <Redirect
                   from='/auth'
-                  to='/auth/sign-in/default
-                  '
+                  to='/auth/sign-in/default'
                 />
               </Switch>
             </Box>
           ) : null}
         </Box>
-      </SidebarContext.Provider>
+      </AuthProvider.Provider>
     </Box>
   );
 }

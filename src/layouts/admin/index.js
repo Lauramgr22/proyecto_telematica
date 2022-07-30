@@ -4,7 +4,7 @@ import Footer from "components/footer/FooterAdmin.js";
 // Layout components
 import Navbar from "components/navbar/NavbarAdmin.js";
 import Sidebar from "components/sidebar/Sidebar.js";
-import { SidebarContext } from "contexts/SidebarContext";
+import { AuthProvider } from "contexts/SidebarContext";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "routes.js";
@@ -113,7 +113,7 @@ export default function Dashboard(props) {
   const { onOpen } = useDisclosure();
   return (
     <Box>
-      <SidebarContext.Provider
+      <AuthProvider.Provider
         value={{
           toggleSidebar,
           setToggleSidebar,
@@ -162,7 +162,7 @@ export default function Dashboard(props) {
           <Box>
           </Box>
         </Box>
-      </SidebarContext.Provider>
+      </AuthProvider.Provider>
     </Box>
   );
 }
