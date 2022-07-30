@@ -5,7 +5,7 @@ import Footer from "components/footer/FooterAdmin.js";
 import Navbar from "components/navbar/NavbarRTL.js";
 import Sidebar from "components/sidebar/Sidebar.js";
 import { RtlProvider } from "components/rtlProvider/RtlProvider.js";
-import { SidebarContext } from "contexts/SidebarContext";
+import { AuthProvider } from "contexts/SidebarContext";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import routes from "routes.js";
@@ -114,7 +114,7 @@ export default function Dashboard(props) {
   const { onOpen } = useDisclosure();
   return (
     <RtlProvider>
-      <SidebarContext.Provider
+      <AuthProvider.Provider
         value={{
           toggleSidebar,
           setToggleSidebar,
@@ -163,7 +163,7 @@ export default function Dashboard(props) {
           <Box>
           </Box>
         </Box>
-      </SidebarContext.Provider>
+      </AuthProvider.Provider>
     </RtlProvider>
   );
 }
