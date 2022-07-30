@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase"
-import { useNavigate } from 'react-router-dom'
-
+import { Redirect } from "react-router-dom"
 import {
   Box,
   Button,
@@ -27,6 +26,7 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiEyeCloseLine } from "react-icons/ri";
 
 function SignUp() {
+  const [error, setError] = useState();
   const [user, setUser] = useState({
     email: "",
     password: ""
@@ -34,13 +34,13 @@ function SignUp() {
   const handleChange = ({ target: { name, value } }) =>
     setUser({ ...user, [name]: value })
 
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setError('')
     try {
-      createUserWithEmailAndPassword(auth, user.email, user.password)
-
+      await createUserWithEmailAndPassword(auth, user.email, user.password)
     } catch (error) {
-
+      setError(error.message);
     }
 
   }
@@ -99,72 +99,76 @@ function SignUp() {
             <HSeparator />
             <HSeparator />
           </Flex>
-          <form onSubmit={handleSubmit}>
-            <FormLabel
-              display='flex'
-              ms='4px'
-              fontSize='sm'
-              fontWeight='500'
-              color={textColor}
-              mb='8px'>
-              Email<Text color={brandStars}>*</Text>
-            </FormLabel>
-            <Input
-              id="email"
-              name="email"
-              onChange={handleChange}
-              isRequired={true}
-              variant='auth'
-              fontSize='sm'
-              ms={{ base: "0px", md: "0px" }}
-              type='email'
-              placeholder='mail@simmmple.com'
-              mb='24px'
-              fontWeight='500'
-              size='lg'
-            />
-            <FormLabel
-              ms='4px'
-              fontSize='sm'
-              fontWeight='500'
-              color={textColor}
-              display='flex'>
-              Password<Text color={brandStars}>*</Text>
-            </FormLabel>
-            <InputGroup size='md'>
+
+          <div>
+            {error && <p>{error}</p>}
+            <form onSubmit={handleSubmit}>
+              <FormLabel
+                display='flex'
+                ms='4px'
+                fontSize='sm'
+                fontWeight='500'
+                color={textColor}
+                mb='8px'>
+                Email<Text color={brandStars}>*</Text>
+              </FormLabel>
               <Input
                 isRequired={true}
-                id="password"
-                name="password"
-                fontSize='sm'
-                placeholder='Min. 8 characters'
-                mb='24px'
-                size='lg'
-                type={show ? "text" : "password"}
-                variant='auth'
+                id="email"
+                name="email"
                 onChange={handleChange}
+                variant='auth'
+                fontSize='sm'
+                ms={{ base: "0px", md: "0px" }}
+                type='email'
+                placeholder='mail@simmmple.com'
+                mb='24px'
+                fontWeight='500'
+                size='lg'
               />
-              <InputRightElement display='flex' alignItems='center' mt='4px'>
-                <Icon
-                  color={textColorSecondary}
-                  _hover={{ cursor: "pointer" }}
-                  as={show ? RiEyeCloseLine : MdOutlineRemoveRedEye}
-                  onClick={handleClick}
+              <FormLabel
+                ms='4px'
+                fontSize='sm'
+                fontWeight='500'
+                color={textColor}
+                display='flex'>
+                Password<Text color={brandStars}>*</Text>
+              </FormLabel>
+              <InputGroup size='md'>
+                <Input
+                  isRequired={true}
+                  id="password"
+                  name="password"
+                  fontSize='sm'
+                  placeholder='Min. 8 characters'
+                  mb='24px'
+                  size='lg'
+                  type={show ? "text" : "password"}
+                  variant='auth'
+                  onChange={handleChange}
                 />
-              </InputRightElement>
-            </InputGroup>
-            <Button
-              type="submit"
-              fontSize='sm'
-              variant='brand'
-              fontWeight='500'
-              w='100%'
-              h='50'
-              mb='24px'
-            >
-              Crear Cuenta
-            </Button>
-          </form>
+                <InputRightElement display='flex' alignItems='center' mt='4px'>
+                  <Icon
+                    color={textColorSecondary}
+                    _hover={{ cursor: "pointer" }}
+                    as={show ? RiEyeCloseLine : MdOutlineRemoveRedEye}
+                    onClick={handleClick}
+                  />
+                </InputRightElement>
+              </InputGroup>
+              <Button
+                type="submit"
+                fontSize='sm'
+                variant='brand'
+                fontWeight='500'
+                w='100%'
+                h='50'
+                mb='24px'
+              >
+                Crear Cuenta
+              </Button>
+            </form>
+          </div>
         </Flex>
       </Flex>
     </DefaultAuth>

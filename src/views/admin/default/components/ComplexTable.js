@@ -36,7 +36,8 @@ export default function ColumnsTable(props) {
   const { columnsData, tableData } = props;
 
   const [store, dispatch] = useContext(StoreContext)
-  const {user, dispositivos} = store;
+  const { user, dispositivos } = store;
+  console.log("+++++++++++", user);
   //console.log( dispositivos);
 
   const columns = useMemo(() => columnsData, [columnsData]);
@@ -160,11 +161,11 @@ export default function ColumnsTable(props) {
                       </Text>
                     );
                   } else if (cell.column.Header === "ACCIONES") {
-                    const handleChange = ()=>dispatch({
+                    const handleChange = () => dispatch({
                       type: types.productChange,
-                      payload:{id:row.original.id}
-                      });
-                    const isChecked= row.cells[3].value== "Activo"?true: false;
+                      payload: { id: row.original.id }
+                    });
+                    const isChecked = row.cells[3].value == "Activo" ? true : false;
                     data = (
                       <box>
                         <SimpleGrid columns={2} spacing='5px'>
@@ -173,10 +174,10 @@ export default function ColumnsTable(props) {
                             fontSize='sm'
                             mb='20px'
                             id='2'
-                            onChange= {
+                            onChange={
                               handleChange
                             }
-                            isChecked= {isChecked}
+                            isChecked={isChecked}
                           />
                           <Icon
                             w='24px'
