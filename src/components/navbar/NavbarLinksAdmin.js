@@ -20,14 +20,37 @@ import { SearchBar } from "components/navbar/searchBar/SearchBar";
 import { SidebarResponsive } from "components/sidebar/Sidebar";
 import PropTypes from "prop-types";
 import React from "react";
+import {MdBarChart} from "react-icons/md";
 // Assets
 import navImage from "assets/img/layout/Navbar.png";
 import { MdNotificationsNone, MdInfoOutline } from "react-icons/md";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 import { FaEthereum } from "react-icons/fa";
-import routes from "routes.js";
+import rutas from "routes.js";
+import DataTables from "views/admin/dataTables";
+import { useContext } from "react"
+import { StoreContext } from "store/StoreProvider";
+
 export default function HeaderLinks(props) {
   const { secondary } = props;
+  const [store, dispatch2] = useContext(StoreContext)
+  const {user, lastId } = store;
+  let routes = rutas;
+  //console.log(user,"888888888888888888888888888888888888888888");
+  if (user.rol !='user'){
+      routes = [
+      {
+        name: "Crear dispositivos",
+        layout: "/admin",
+        icon: <Icon as={MdBarChart} width='20px' height='20px' color='inherit' />,
+        path: "/data-tables",
+        component: DataTables,
+      },
+      ...rutas
+    ];
+  }
+
+  console.log(routes);
   const { colorMode, toggleColorMode } = useColorMode();
   // Chakra Color Mode
   const navbarIcon = useColorModeValue("gray.400", "white");
@@ -132,7 +155,7 @@ export default function HeaderLinks(props) {
               fontSize='sm'
               fontWeight='700'
               color={textColor}>
-              😄👋&nbsp; Hola Usuario!
+              😄👋&nbsp; Que tal?
             </Text>
           </Flex>
         </MenuList>

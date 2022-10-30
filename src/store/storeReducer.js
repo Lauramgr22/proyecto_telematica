@@ -10,7 +10,7 @@ const types = {
 }
 const initialStore = {
     lastId:4,
-    user: {id:1, name: 'Laura'},
+    user: {id:1, name: 'Laura', rol: 'user'},
     dispositivos: [
         {
             "id": 1,

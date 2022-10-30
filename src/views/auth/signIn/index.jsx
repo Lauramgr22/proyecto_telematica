@@ -42,15 +42,20 @@ import {
 // Custom components
 import { HSeparator } from "components/separator/Separator";
 import DefaultAuth from "layouts/auth/Default";
+import { types } from "store/storeReducer";
+import { useDispatch } from "store/StoreProvider";
 // Assets
 //Aqui va la imagen, se va a la ruta y reemplazamos por la imagen que queremos, palabra clave: Tamarindo
 import illustration from "assets/img/auth/auth2.png";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiEyeCloseLine } from "react-icons/ri";
-
+import { useHistory } from "react-router-dom";
+        
 function SignIn() {
   // Chakra color mode
+  const history = useHistory();
+  const dispatch= useDispatch();
   const textColor = useColorModeValue("navy.700", "white");
   const textColorSecondary = "gray.400";
   const textColorDetails = useColorModeValue("navy.700", "secondaryGray.600");
@@ -67,6 +72,8 @@ function SignIn() {
     { bg: "whiteAlpha.200" }
   );
   const [show, setShow] = React.useState(false);
+  const [email, setEmail] = React.useState("");
+  const [contrasena, setContrasena] = React.useState("");
   const handleClick = () => setShow(!show);
   return (
     <DefaultAuth illustrationBackground={illustration} image={illustration}>
@@ -125,10 +132,14 @@ function SignIn() {
               fontSize='sm'
               ms={{ base: "0px", md: "0px" }}
               type='email'
-              placeholder='mail@simmmple.com'
+              placeholder='mail@ejemplo.com'
               mb='24px'
               fontWeight='500'
               size='lg'
+              onChange={({target:{value}})=>{
+                //console.log(value);
+                setEmail(value);
+              }}
             />
             <FormLabel
               ms='4px'
@@ -136,17 +147,21 @@ function SignIn() {
               fontWeight='500'
               color={textColor}
               display='flex'>
-              Password<Text color={brandStars}>*</Text>
+              Contraseña<Text color={brandStars}>*</Text>
             </FormLabel>
             <InputGroup size='md'>
               <Input
                 isRequired={true}
                 fontSize='sm'
-                placeholder='Min. 8 characters'
+                placeholder='Min. 8 caracteres'
                 mb='24px'
                 size='lg'
                 type={show ? "text" : "password"}
                 variant='auth'
+                onChange={({target:{value}})=>{
+                  //console.log(value);
+                  setContrasena(value);
+                }}
               />
               <InputRightElement display='flex' alignItems='center' mt='4px'>
                 <Icon
@@ -179,18 +194,61 @@ function SignIn() {
                   fontSize='sm'
                   w='124px'
                   fontWeight='500'>
-                  Forgot password?
+                  Olvidaste tu contraseña?
                 </Text>
               </NavLink>
             </Flex>
             <Button
+              onClick={()=>{
+                const admin = {
+                  email: 'admin@mail.com', pass: '123456admin'
+                }
+                const user = {
+                  email: 'user@mail.com', pass: '123456user'
+                }
+                if (email == admin.email){
+                  if (contrasena== admin.pass){
+                    console.log('Es un administrador');
+                    dispatch({
+                      type: types.authLogin,
+                      payload:{
+                        "id":1,
+                        "name":"administrador",
+                        'rol': 'admin'
+                      }
+                      })
+                    history.push('/horizon-ui-chakra#/admin/default')
+                  } else{
+                    alert ('Credenciales incorrectas')
+                  }
+                } else{
+                  if (email == user.email){
+                    if (contrasena== user.pass){
+                      console.log('Es un usuario');
+                      dispatch({
+                        type: types.authLogin,
+                        payload:{
+                          "id":2,
+                          "name":"usuario",
+                          'rol': 'user'
+                        }
+                        })
+                      history.push('/horizon-ui-chakra#/admin/default')
+                    } else{
+                      alert ('Credenciales incorrectas')
+                    }
+                  } else{
+                    alert ('Credenciales incorrectas')
+                  }
+                }
+              }}
               fontSize='sm'
               variant='brand'
               fontWeight='500'
               w='100%'
               h='50'
               mb='24px'>
-              Sign In
+              Iniciar sesión
             </Button>
           </FormControl>
           <Flex
