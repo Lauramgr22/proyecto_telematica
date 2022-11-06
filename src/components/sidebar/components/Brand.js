@@ -17,6 +17,7 @@ export function SidebarBrand() {
       <HSeparator mb='20px' />
     </Flex>
   );
+  //borojo: cambiar el titulo
 }
 
 export default SidebarBrand;
