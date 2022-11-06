@@ -7,12 +7,24 @@ import Sidebar from "components/sidebar/Sidebar.js";
 import { SidebarContext } from "contexts/SidebarContext";
 import React, { useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import routes from "routes.js";
+import { useContext } from "react"
+import { StoreContext } from "store/StoreProvider";
+import rutas from "routes.js";
+
+//import routes from "routes.js";
 
 // Custom Chakra theme
 export default function Dashboard(props) {
   const { ...rest } = props;
   // states and functions
+  const [store, dispatch2] = useContext(StoreContext)
+  const { user, lastId } = store;
+  const routes = Object.values(rutas);
+  //console.log(JSON.stringify(routes),"888888888888888888888888888888888888888888");
+  if (user.rol == 'user') {
+    routes.splice(1,1)
+  }
+  //console.log(routes, "pppppppppppppppppppppppppppppp");
   const [fixed] = useState(false);
   const [toggleSidebar, setToggleSidebar] = useState(false);
   // functions for changing the states from components
