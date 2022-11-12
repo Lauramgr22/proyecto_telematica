@@ -57,7 +57,7 @@ export function Dispositivos(){
           fontSize='sm'
           ms={{ base: "0px", md: "0px" }}
           type='text'
-          placeholder='Bombillo'
+          placeholder='Licuadora'
           mb='24px'
           fontWeight='500'
           size='lg'
@@ -89,7 +89,31 @@ export function Dispositivos(){
             variant='auth'
           />
         </InputGroup>
+        <FormLabel
+          ms='4px'
+          fontSize='sm'
+          fontWeight='500'
+          color={textColor}
+          display='flex'>
+          Precio Kw/h (COP)<Text color={brandStars}>*</Text>
+        </FormLabel>
+        <InputGroup size='md'>
+          <Input
+            isRequired={true}
+            fontSize='sm'
+            placeholder='20000 COP'
+            mb='24px'
+            size='lg'
+            onChange={({target:{value}})=>{
+              console.log(value);
+              setPotencia(value);
+            }}
+            type='number'
+            variant='auth'
+          />
+        </InputGroup>
         <Button
+          background='#01afea'
           fontSize='sm'
           variant='brand'
           fontWeight='500'

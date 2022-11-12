@@ -46,7 +46,7 @@ import { types } from "store/storeReducer";
 import { useDispatch } from "store/StoreProvider";
 // Assets
 //Aqui va la imagen, se va a la ruta y reemplazamos por la imagen que queremos, palabra clave: Tamarindo
-import illustration from "assets/img/auth/auth2.png";
+import illustration from "assets/img/auth/logo54.png";
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiEyeCloseLine } from "react-icons/ri";
@@ -185,7 +185,7 @@ function SignIn() {
                   fontWeight='normal'
                   color={textColor}
                   fontSize='sm'>
-                  Keep me logged in
+                  Mantenme conectado
                 </FormLabel>
               </FormControl>
               <NavLink to='/auth/forgot-password'>
@@ -242,6 +242,7 @@ function SignIn() {
                   }
                 }
               }}
+              background='#01afea'
               fontSize='sm'
               variant='brand'
               fontWeight='500'
