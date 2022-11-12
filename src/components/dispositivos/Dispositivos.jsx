@@ -104,10 +104,6 @@ export function Dispositivos(){
             placeholder='20000 COP'
             mb='24px'
             size='lg'
-            onChange={({target:{value}})=>{
-              console.log(value);
-              setPotencia(value);
-            }}
             type='number'
             variant='auth'
           />
