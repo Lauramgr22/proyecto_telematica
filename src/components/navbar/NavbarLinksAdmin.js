@@ -107,8 +107,8 @@ export default function HeaderLinks(props) {
         onClick={toggleColorMode}>
         <Icon
           me='10px'
-          h='18px'
-          w='18px'
+          h='25px'
+          w='30px'
           color={navbarIcon}
           as={colorMode === "light" ? IoMdMoon : IoMdSunny}
         />
@@ -118,8 +118,8 @@ export default function HeaderLinks(props) {
           <Avatar
             _hover={{ cursor: "pointer" }}
             color='white'
-            name='Usuario'
-            bg='#11047A'
+            name=''
+            bg='#01afea'
             size='sm'
             w='40px'
             h='40px'
