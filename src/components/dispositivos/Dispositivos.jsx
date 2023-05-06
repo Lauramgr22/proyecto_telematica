@@ -49,7 +49,7 @@ export function Dispositivos(){
           fontWeight='500'
           color={textColor}
           mb='8px'>
-          Dispositivo<Text color={brandStars}>*</Text>
+          Dispositivo<Text color={"#B50000"}>*</Text>
         </FormLabel>
         <Input
           isRequired={true}
@@ -57,7 +57,7 @@ export function Dispositivos(){
           fontSize='sm'
           ms={{ base: "0px", md: "0px" }}
           type='text'
-          placeholder='Licuadora'
+          placeholder='BOMBILLO'
           mb='24px'
           fontWeight='500'
           size='lg'
@@ -72,13 +72,13 @@ export function Dispositivos(){
           fontWeight='500'
           color={textColor}
           display='flex'>
-          Potencia (W)<Text color={brandStars}>*</Text>
+          Potencia (W)<Text color={"#B50000"}>*</Text>
         </FormLabel>
         <InputGroup size='md'>
           <Input
             isRequired={true}
             fontSize='sm'
-            placeholder='40 W'
+            placeholder='70'
             mb='24px'
             size='lg'
             onChange={({target:{value}})=>{
@@ -95,13 +95,13 @@ export function Dispositivos(){
           fontWeight='500'
           color={textColor}
           display='flex'>
-          Precio Kw/h (COP)<Text color={brandStars}>*</Text>
+          Precio Kw/h (COP)<Text color={"#B50000"}>*</Text>
         </FormLabel>
         <InputGroup size='md'>
           <Input
             isRequired={true}
             fontSize='sm'
-            placeholder='20000 COP'
+            placeholder='15000'
             mb='24px'
             size='lg'
             type='number'
@@ -109,9 +109,9 @@ export function Dispositivos(){
           />
         </InputGroup>
         <Button
-          background='#01afea'
+          background='#B50000'
           fontSize='sm'
-          variant='brand'
+         // variant='brand'
           fontWeight='500'
           w='100%'
           h='50'
@@ -123,12 +123,11 @@ export function Dispositivos(){
               "name":name,
               "estado": "Inactivo",
               "potencia": potencia,
-              "energia": potencia*24,
               "acciones": 75.5 
             }
             })}
             >
-          Crear dispositivo
+          Ingresar nuevo dispositivo
         </Button>
       </FormControl>
             </Box>

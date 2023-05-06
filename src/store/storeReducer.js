@@ -18,7 +18,6 @@ const initialStore = {
             "name": "Bombillo 1",
             "estado": "Activo",
             "potencia": 40,
-            "energia": 960,
             "acciones": 0,
         },
         {
@@ -26,7 +25,6 @@ const initialStore = {
             "name": "Bombillo 2",
             "estado": "Inactivo",
             "potencia": 40,
-            "energia": 960,
             "acciones": 1,
         },
         {
@@ -34,7 +32,6 @@ const initialStore = {
             "name": "Nevera",
             "estado": "Inactivo",
             "potencia": 100,
-            "energia": 2400,
             "acciones": 2,
         },
         {
@@ -42,7 +39,6 @@ const initialStore = {
             "name": "Lavadora",
             "estado": "Inactivo",
             "potencia": 100,
-            "energia": 2400,
             "acciones": 3,
         }
     ]

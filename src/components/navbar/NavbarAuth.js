@@ -468,7 +468,7 @@ export default function AuthNavbar(props) {
                   <Box
                     w='1px'
                     h='20px'
-                    bg={colorMode === "dark" ? "white" : "gray.700"}
+                    bg={colorMode === "red" ? "white" : "gray.700"}
                   />
                 </Stack>
               }

@@ -46,7 +46,8 @@ import { types } from "store/storeReducer";
 import { useDispatch } from "store/StoreProvider";
 // Assets
 //Aqui va la imagen, se va a la ruta y reemplazamos por la imagen que queremos, palabra clave: Tamarindo
-import illustration from "assets/img/auth/logo54.png";
+import illustration from "assets/img/auth/negro.svg";
+//ArreglarImagen aqui en el inicio de sesion
 import { FcGoogle } from "react-icons/fc";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { RiEyeCloseLine } from "react-icons/ri";
@@ -56,7 +57,7 @@ function SignIn() {
   // Chakra color mode
   const history = useHistory();
   const dispatch= useDispatch();
-  const textColor = useColorModeValue("navy.700", "white");
+  const textColor = useColorModeValue("navy.700", "blue");
   const textColorSecondary = "gray.400";
   const textColorDetails = useColorModeValue("navy.700", "secondaryGray.600");
   const textColorBrand = useColorModeValue("brand.500", "white");
@@ -90,22 +91,22 @@ function SignIn() {
         mt={{ base: "40px", md: "14vh" }}
         flexDirection='column'>
         <Box me='auto'>
-          <Heading color={textColor} fontSize='36px' mb='10px'>
+          <Heading color={"#B50000"} fontSize='70px' mb='10px'>
             Iniciar sesión
           </Heading>
           <Text
             mb='36px'
             ms='4px'
             color={textColorSecondary}
-            fontWeight='400'
-            fontSize='md'>
-            ¡Ingrese su correo electrónico y contraseña para iniciar sesión!
+            fontWeight='800'
+            fontSize='x-large'>
+            <marquee>¡Ingrese su correo electrónico y contraseña para iniciar sesión!</marquee>
           </Text>
         </Box>
         <Flex
           zIndex='2'
           direction='column'
-          w={{ base: "100%", md: "420px" }}
+          w={{ base: "100%", md: "820px" }}
           maxW='100%'
           background='transparent'
           borderRadius='15px'
@@ -121,10 +122,10 @@ function SignIn() {
               display='flex'
               ms='4px'
               fontSize='sm'
-              fontWeight='500'
+              fontWeight='250'
               color={textColor}
               mb='8px'>
-              Email<Text color={brandStars}>*</Text>
+              Email<Text color={"#B50000"}>*</Text>
             </FormLabel>
             <Input
               isRequired={true}
@@ -147,7 +148,7 @@ function SignIn() {
               fontWeight='500'
               color={textColor}
               display='flex'>
-              Contraseña<Text color={brandStars}>*</Text>
+              Contraseña<Text color={"#B50000"}>*</Text>
             </FormLabel>
             <InputGroup size='md'>
               <Input
@@ -173,30 +174,7 @@ function SignIn() {
               </InputRightElement>
             </InputGroup>
             <Flex justifyContent='space-between' align='center' mb='24px'>
-              <FormControl display='flex' alignItems='center'>
-                <Checkbox
-                  id='remember-login'
-                  colorScheme='brandScheme'
-                  me='10px'
-                />
-                <FormLabel
-                  htmlFor='remember-login'
-                  mb='0'
-                  fontWeight='normal'
-                  color={textColor}
-                  fontSize='sm'>
-                  Mantenme conectado
-                </FormLabel>
-              </FormControl>
-              <NavLink to='/auth/forgot-password'>
-                <Text
-                  color={textColorBrand}
-                  fontSize='sm'
-                  w='124px'
-                  fontWeight='500'>
-                  Olvidaste tu contraseña?
-                </Text>
-              </NavLink>
+
             </Flex>
             <Button
               onClick={()=>{
@@ -219,7 +197,7 @@ function SignIn() {
                       })
                     history.push('/horizon-ui-chakra#/admin/default')
                   } else{
-                    alert ('Credenciales incorrectas')
+                    window.alert ('Informacion invalida')
                   }
                 } else{
                   if (email == user.email){
@@ -235,16 +213,16 @@ function SignIn() {
                         })
                       history.push('/horizon-ui-chakra#/admin/default')
                     } else{
-                      alert ('Credenciales incorrectas')
+                      window.alert ('Informacion invalida')
                     }
                   } else{
-                    alert ('Credenciales incorrectas')
+                    window.alert ('Informacion invalida')
                   }
                 }
               }}
-              background='#01afea'
+              background='#B50000'
               fontSize='sm'
-              variant='brand'
+              //variant='brand'
               fontWeight='500'
               w='100%'
               h='50'

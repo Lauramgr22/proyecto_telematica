@@ -3,7 +3,6 @@
     "name":"Bombillo",
     "estado": "Activo",
     "potencia": "18 Apr 2022",
-    "energia": 75.5,
     "acciones": 75.5  
     
   },
@@ -11,21 +10,18 @@
     "name":"Bombillo",
     "estado": "Inactivo",
     "potencia": "18 Apr 2022",
-    "energia": 25.5,
     "acciones": 75.5
   },
   {
     "name":"Marketplace",
     "estado": "Error",
     "potencia": "20 May 2021",
-    "energia": 90,
     "acciones": 75.5 
   },
   {
     "name":"Weekly Uppotencias",
     "estado": "Approved",
     "potencia": "12 Jul 2021",
-    "energia": 50.5,
     "acciones": 75.5 
   }
 ]

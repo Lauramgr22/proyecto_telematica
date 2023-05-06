@@ -73,10 +73,6 @@ export const columnsDataComplex = [
     accessor: "dispositivos",
   },
   {
-    Header: "ENERGIA",
-    accessor: "energia",
-  },
-  {
     Header: "POTENCIA",
     accessor: "potencia",
   },

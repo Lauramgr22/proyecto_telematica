@@ -119,14 +119,14 @@ export default function HeaderLinks(props) {
             _hover={{ cursor: "pointer" }}
             color='white'
             name=''
-            bg='#01afea'
+            bg='#B50000'
             size='sm'
             w='40px'
             h='40px'
           />
         </MenuButton>
         <MenuList
-          boxShadow={shadow}
+          boxShadow={"gray"}
           p='0px'
           mt='10px'
           borderRadius='20px'
@@ -143,7 +143,7 @@ export default function HeaderLinks(props) {
               fontSize='sm'
               fontWeight='700'
               color={textColor}>
-              😄👋&nbsp; Que tal?
+              Grupo3= IoTH&H 🐔🤠🤬
             </Text>
           </Flex>
         </MenuList>

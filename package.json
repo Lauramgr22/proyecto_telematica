@@ -1,6 +1,6 @@
 {
-  "homepage": "DIoTHome",
-  "name": "DIoTHome",
+  "homepage": "IoTH&H",
+  "name": "IoTH&H",
   "version": "1.0.1",
   "private": true,
   "dependencies": {
@@ -33,6 +33,7 @@
     "react-table": "^7.7.0",
     "stylis": "^4.1.1",
     "stylis-plugin-rtl": "2.0.2",
+    "sweetalert": "^2.1.2",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

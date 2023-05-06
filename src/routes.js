@@ -24,12 +24,12 @@ const routes = [
     name: "Ver dispositivos",
     layout: "/admin",
     path: "/default",
-    icon: <Icon as={MdHome} width='20px' height='20px' color='inherit' />,
+    icon: <Icon as={MdHome} width='20px' height='20px' color='#B50000' />,
     component: MainDashboard,
   },      {
     name: "Crear dispositivos",
     layout: "/admin",
-    icon: <Icon as={MdBarChart} width='20px' height='20px' color='inherit' />,
+    icon: <Icon as={MdPerson} width='20px' height='20px' color='#B50000' />,
     path: "/data-tables",
     component: DataTables,
   },
@@ -37,7 +37,7 @@ const routes = [
     name: "Iniciar sesion",
     layout: "/auth",
     path: "/sign-in",
-    icon: <Icon as={MdLock} width='20px' height='20px' color='inherit' />,
+    icon: <Icon as={MdLock} width='20px' height='20px' color='#B50000' />,
     component: SignInCentered,
   }
 ];

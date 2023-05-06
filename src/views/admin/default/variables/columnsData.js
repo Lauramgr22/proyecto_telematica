@@ -22,10 +22,6 @@ export const columnsDataComplex = [
     accessor: "name",
   },
   {
-    Header: "ENERGIA",
-    accessor: "energia",
-  },
-  {
     Header: "POTENCIA",
     accessor: "potencia",
   },

@@ -13,7 +13,7 @@ export function SidebarBrand() {
 
   return (
     <Flex align='center' direction='column'>
-      <b><h1 style={{fontSize:"28px",color:"magneta"}}>DIoTHome</h1></b>
+      <b><h2 style={{fontSize:"28px",color:"#B50000"}}>IoTH&H</h2></b>
       <HSeparator mb='20px' />
     </Flex>
   );

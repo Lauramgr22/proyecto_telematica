@@ -24,19 +24,19 @@ abbr[title] {
   text-decoration: unset !important;
 }
 .react-calendar__navigation__prev-button {
-  background-color: #4318ff !important;
+  background-color: #ff1818 !important;
   border-radius: 10px;
   min-width: 34px !important;
   height: 34px !important;
-  color: white;
+  color: rgba(255, 255, 255, 0.555);
 }
 .react-calendar__navigation__next-button {
-  background-color: #4318ff !important;
+  background-color: #ff1818 !important;
   border-radius: 10px;
   min-width: 34px !important;
   width: 34px !important;
   height: 34px !important;
-  color: white;
+  color: rgba(255, 255, 255, 0.555);
 }
 .react-calendar__navigation__label {
   font-weight: 700 !important;
@@ -54,10 +54,10 @@ abbr[title] {
   justify-content: center;
   padding: 0px !important;
   height: 34px !important;
-  color: #1b2559;
+  color: #65666bd0;
 }
 .react-calendar__month-view__weekdays {
-  background-color: #f4f7fe;
+  background-color: #f4f7fe9a;
   border-radius: 10px;
   margin-bottom: 6px;
 }
@@ -73,32 +73,32 @@ abbr[title] {
 .react-calendar__tile--active,
 .react-calendar__tile--active:enabled:hover,
 .react-calendar__tile--active:enabled:focus {
-  background: #4318ff;
+  background: #ff1818;
   border-radius: 10px;
-  color: white;
+  color: rgba(255, 255, 255, 0.555);
 }
 .react-calendar__tile--range,
 .react-calendar__tile--range:enabled:hover,
 .react-calendar__tile--range:enabled:focus {
-  background: #f4f7fe;
-  color: #4318ff;
+  background: rgba(255, 255, 255, 0.555);
+  color: #ff1818;
   border-radius: 0px;
 }
 .react-calendar__tile--rangeStart,
 .react-calendar__tile--rangeStart:enabled:hover,
 .react-calendar__tile--rangeStart:enabled:focus {
-  background: #4318ff;
+  background: #ff1818;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  color: white;
+  color: rgba(255, 255, 255, 0.555);
 }
 .react-calendar__tile--rangeEnd,
 .react-calendar__tile--rangeEnd:enabled:hover,
 .react-calendar__tile--rangeEnd:enabled:focus {
-  background: #4318ff;
+  background: #ff1818;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  color: white;
+  color: rgba(255, 255, 255, 0.555);
 }
 
 /* DARK MODE */
@@ -107,14 +107,14 @@ body.chakra-ui-dark .react-calendar {
   border-radius: 30px;
 }
 body.chakra-ui-dark .react-calendar__navigation__prev-button {
-  background-color: #7551ff !important;
+  background-color: #ff5151 !important;
 }
 body.chakra-ui-dark .react-calendar__navigation__next-button {
-  background-color: #7551ff !important;
-  color: white;
+  background-color: #ff5151 !important;
+  color: rgba(255, 255, 255, 0.555);
 }
 body.chakra-ui-dark .react-calendar__tile {
-  color: white;
+  color: rgba(255, 255, 255, 0.555);
 }
 body.chakra-ui-dark .react-calendar__tile:enabled:hover,
 body.chakra-ui-dark .react-calendar__tile:enabled:focus {
@@ -134,24 +134,24 @@ body.chakra-ui-dark .react-calendar__month-view__days__day--neighboringMonth {
 body.chakra-ui-dark .react-calendar__tile--active,
 body.chakra-ui-dark .react-calendar__tile--active:enabled:hover,
 body.chakra-ui-dark .react-calendar__tile--active:enabled:focus {
-  background: #7551ff;
+  background: #ff5151;
   color: white;
 }
 body.chakra-ui-dark .react-calendar__tile--range,
 body.chakra-ui-dark .react-calendar__tile--range:enabled:hover,
 body.chakra-ui-dark .react-calendar__tile--range:enabled:focus {
-  background: rgba(255, 255, 255, 0.1);
-  color: #7551ff;
+  background: rgba(255, 255, 255, 0.555);
+  color: #ff5151;
 }
 body.chakra-ui-dark .react-calendar__tile--rangeStart,
 body.chakra-ui-dark .react-calendar__tile--rangeStart:enabled:hover,
 body.chakra-ui-dark .react-calendar__tile--rangeStart:enabled:focus {
-  background: #7551ff;
-  color: white;
+  background: #ff5151;
+  color: rgba(255, 255, 255, 0.555);
 }
 body.chakra-ui-dark .react-calendar__tile--rangeEnd,
 body.chakra-ui-dark .react-calendar__tile--rangeEnd:enabled:hover,
 body.chakra-ui-dark .react-calendar__tile--rangeEnd:enabled:focus {
-  background: #7551ff;
-  color: white;
+  background: #ff5151;
+  color: rgba(255, 255, 255, 0.555);
 }
